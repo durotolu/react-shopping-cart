@@ -20,8 +20,19 @@ function App() {
 	};
 
 	const removeItem = item => {
-		const itemRemoveResult = cart.filter((el) => el.id !== item.id)
-		setCart(itemRemoveResult)
+		let mutatedCart = cart
+		if (mutatedCart.filter((el) => el.id === item.id).length > 1) {
+			debugger
+			
+			const oneIndex = mutatedCart.indexOf(item)
+			mutatedCart.splice(oneIndex, 1);
+				//setCart(mutatedCart)
+			debugger
+		} else {
+			mutatedCart = cart.filter((el) => el.id !== item.id);
+		}
+		console.log(mutatedCart)
+		setCart(mutatedCart)
 	}
 
 	return (
